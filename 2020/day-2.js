@@ -69,8 +69,11 @@ const arr = data
   .map(entry => {
     let [values, requiredChar, _password] = entry.split(' ')
 
-    values = values.split('-')
-    requiredChar = requiredChar.slice(0, 1)
+    values = values
+      .split('-')
+      .map(value => Number(value))
+
+    requiredChar = requiredChar[0]
 
     return [values, requiredChar, _password]
   })
