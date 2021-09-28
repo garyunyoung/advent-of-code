@@ -49,14 +49,12 @@ function recountValidPasswords() {
     i = i - 1
     j = j - 1
 
-    if (password[i] === requiredChar &&
-      password[j] !== requiredChar) {
-      ++validPasswordCount
-    }
+    const isAtPos1 = password[i] === requiredChar 
+    const isAtPos2 = password[j] === requiredChar 
 
-    if (password[j] === requiredChar &&
-      password[i] !== requiredChar) {
-      ++validPasswordCount
+    if (isAtPos1 && !isAtPos2 || 
+        isAtPos2 && !isAtPos1) {
+        ++validPasswordCount
     }
   }
 
