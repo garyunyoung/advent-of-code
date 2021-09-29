@@ -1,9 +1,17 @@
 const fs = require('fs')
 
+// PART ONE
 const entries = readEntries()
 const allPassportsFieldCodes = entries.map(entry => getFieldCodes(entry))
-
-const requiredFields = ['byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid']
+const requiredFields = [
+  'byr',
+  'iyr',
+  'eyr',
+  'hgt',
+  'hcl',
+  'ecl',
+  'pid'
+]
 
 function countValidPassports(allPassportsFieldCodes, requiredFields) {
   let validPassportCount = 0

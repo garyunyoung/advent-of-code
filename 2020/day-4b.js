@@ -1,5 +1,6 @@
 const fs = require('fs')
 
+// PART TWO
 function readEntries() {
   const data = fs.readFileSync('day-4-input.txt',
     { encoding: 'utf8', flag: 'r' })

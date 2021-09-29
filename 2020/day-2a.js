@@ -7,7 +7,7 @@ function countValidPasswords(arr) {
   let validPasswordCount = 0
 
   for (const [[min, max], requiredChar, password] of arr) {
-    let requiredCharCount = 0 
+    let requiredCharCount = 0
 
     for (const char of password) {
       if (char === requiredChar) {
@@ -15,9 +15,9 @@ function countValidPasswords(arr) {
       }
     }
 
-    if (requiredCharCount >= min && 
-        requiredCharCount <= max) {
-        ++validPasswordCount
+    if (requiredCharCount >= min &&
+      requiredCharCount <= max) {
+      ++validPasswordCount
     }
   }
 
@@ -32,29 +32,9 @@ function countValidPasswordsUsingRegex(arr) {
     const regex = new RegExp(requiredChar, 'g')
     const requiredCharCount = (password.match(regex) || []).length
 
-    if (requiredCharCount >= min && 
-        requiredCharCount <= max) {
-        ++validPasswordCount
-    }
-  }
-
-  return validPasswordCount
-}
-
-// PART TWO
-function recountValidPasswords() {
-  let validPasswordCount = 0
-
-  for (let [[i, j], requiredChar, password] of arr) {
-    i = i - 1
-    j = j - 1
-
-    const isAtPos1 = password[i] === requiredChar 
-    const isAtPos2 = password[j] === requiredChar 
-
-    if (isAtPos1 && !isAtPos2 || 
-        isAtPos2 && !isAtPos1) {
-        ++validPasswordCount
+    if (requiredCharCount >= min &&
+      requiredCharCount <= max) {
+      ++validPasswordCount
     }
   }
 
@@ -77,4 +57,3 @@ const arr = data
   })
 
 console.log('PART ONE:', countValidPasswords(arr))
-console.log('PART TWO', recountValidPasswords(arr))
