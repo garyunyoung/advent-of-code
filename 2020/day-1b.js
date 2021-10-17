@@ -17,7 +17,7 @@ function getThreeSums(arr, value) {
   return sum
 }
 
-const data = fs.readFileSync('day-1-input.txt',
+const data = fs.readFileSync('inputs/day-1.txt',
   { encoding: 'utf8', flag: 'r' })
 
 const arr = data

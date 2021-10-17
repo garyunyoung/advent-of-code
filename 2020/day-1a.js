@@ -13,7 +13,7 @@ function getTwoSums(arr, value) {
     }
     return sum;
 }
-var data = fs.readFileSync('day-1-input.txt', { encoding: 'utf8', flag: 'r' });
+var data = fs.readFileSync('inputs/day-1-input.txt', { encoding: 'utf8', flag: 'r' });
 var arr = data
     .trim()
     .split('\n')
