@@ -1,6 +1,5 @@
 "use strict";
 exports.__esModule = true;
-// const fs = require('fs')
 var fs = require("fs");
 // PART ONE 
 function getTwoSums(arr, value) {
