@@ -1,7 +1,16 @@
 "use strict";
 exports.__esModule = true;
-var fs = require("fs");
-// PART TWO
+var utilities_1 = require("../utilities");
+// Data
+var data = (0, utilities_1["default"])('day-1');
+var _testData = [
+    199, 200, 208, 210, 200, 207, 240, 269, 260, 263
+];
+var transformedData = data
+    .trim()
+    .split('\n')
+    .map(function (str) { return Number(str); });
+// Part Two
 function countIncrements(measurements) {
     var count = 0;
     for (var i = 0; i < measurements.length - 2; i++) {
@@ -17,7 +26,7 @@ function countIncrements(measurements) {
     }
     return count;
 }
-// PART TWO ALTERNATIVE
+// Part Two - alternative solution
 function countIncrementsAlternative(measurements) {
     var count = 0;
     for (var i = 0; i < measurements.length - 2; i++) {
@@ -27,16 +36,4 @@ function countIncrementsAlternative(measurements) {
     }
     return count;
 }
-// PART
-var data = fs.readFileSync('inputs/day-1.txt', {
-    encoding: 'utf8',
-    flag: 'r'
-});
-var _testData = [
-    199, 200, 208, 210, 200, 207, 240, 269, 260, 263
-];
-var transformedData = data
-    .trim()
-    .split('\n')
-    .map(function (str) { return Number(str); });
-console.log('PART TWO:', countIncrementsAlternative(transformedData));
+console.log('PART TWO:', countIncrements(transformedData));

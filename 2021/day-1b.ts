@@ -1,4 +1,16 @@
-import * as fs from 'fs'
+import getData from '../utilities'
+
+// Data
+const data = getData('day-1')
+
+const _testData: number[] = [
+  199, 200, 208, 210, 200, 207, 240, 269, 260, 263
+]
+
+const transformedData: number[] = data
+  .trim()
+  .split('\n')
+  .map((str) => Number(str))
 
 // Part Two
 function countIncrements(measurements: number[]): number {
@@ -23,7 +35,7 @@ function countIncrements(measurements: number[]): number {
   return count
 }
 
-// Part Two - alternative
+// Part Two - alternative solution
 function countIncrementsAlternative(
   measurements: number[]
 ): number {
@@ -37,20 +49,5 @@ function countIncrementsAlternative(
 
   return count
 }
-
-// Data
-const data = fs.readFileSync('inputs/day-1.txt', {
-  encoding: 'utf8',
-  flag: 'r'
-})
-
-const _testData: number[] = [
-  199, 200, 208, 210, 200, 207, 240, 269, 260, 263
-]
-
-const transformedData: number[] = data
-  .trim()
-  .split('\n')
-  .map((str) => Number(str))
 
 console.log('PART TWO:', countIncrements(transformedData))
