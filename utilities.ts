@@ -1,6 +1,6 @@
 import * as fs from 'fs'
 
-export default function getData(fileName) {
+export default function getData(fileName: string) {
   const path = `inputs/${fileName}.txt`
 
   return fs.readFileSync(path, {
