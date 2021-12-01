@@ -11,21 +11,32 @@ function countIncrements(measurements) {
         var secondWindow = measurements[i + 1] +
             measurements[i + 2] +
             measurements[i + 3];
-        if (secondWindow > firstWindow) {
+        if (firstWindow < secondWindow) {
             ++count;
         }
     }
     return count;
 }
+// PART TWO ALTERNATIVE
+function countIncrementsAlternative(measurements) {
+    var count = 0;
+    for (var i = 0; i < measurements.length - 2; i++) {
+        if (measurements[i] < measurements[i + 3]) {
+            ++count;
+        }
+    }
+    return count;
+}
+// PART
 var data = fs.readFileSync('inputs/day-1.txt', {
     encoding: 'utf8',
     flag: 'r'
 });
-var testData = [
+var _testData = [
     199, 200, 208, 210, 200, 207, 240, 269, 260, 263
 ];
 var transformedData = data
     .trim()
     .split('\n')
     .map(function (str) { return Number(str); });
-console.log('PART TWO:', countIncrements(transformedData));
+console.log('PART TWO:', countIncrementsAlternative(transformedData));

@@ -1,6 +1,6 @@
 import * as fs from 'fs'
 
-// PART TWO
+// Part Two
 function countIncrements(measurements: number[]): number {
   let count: number = 0
 
@@ -15,7 +15,7 @@ function countIncrements(measurements: number[]): number {
       measurements[i + 2] +
       measurements[i + 3]
 
-    if (secondWindow > firstWindow) {
+    if (firstWindow < secondWindow) {
       ++count
     }
   }
@@ -23,6 +23,22 @@ function countIncrements(measurements: number[]): number {
   return count
 }
 
+// Part Two - alternative
+function countIncrementsAlternative(
+  measurements: number[]
+): number {
+  let count: number = 0
+
+  for (let i = 0; i < measurements.length - 2; i++) {
+    if (measurements[i] < measurements[i + 3]) {
+      ++count
+    }
+  }
+
+  return count
+}
+
+// Data
 const data = fs.readFileSync('inputs/day-1.txt', {
   encoding: 'utf8',
   flag: 'r'
