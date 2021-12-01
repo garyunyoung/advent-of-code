@@ -1,11 +1,21 @@
 import * as fs from 'fs'
 
-// PART ONE
+// PART TWO
 function countIncrements(measurements: number[]): number {
   let count: number = 0
 
-  for (let i = 0; i < measurements.length - 1; i++) {
-    if (measurements[i + 1] > measurements[i]) {
+  for (let i = 0; i < measurements.length - 2; i++) {
+    let firstWindow: number =
+      measurements[i + 0] +
+      measurements[i + 1] +
+      measurements[i + 2]
+
+    let secondWindow: number =
+      measurements[i + 1] +
+      measurements[i + 2] +
+      measurements[i + 3]
+
+    if (secondWindow > firstWindow) {
       ++count
     }
   }
@@ -27,4 +37,4 @@ const transformedData: number[] = data
   .split('\n')
   .map((str) => Number(str))
 
-console.log('PART ONE:', countIncrements(transformedData))
+console.log('PART TWO:', countIncrements(transformedData))
