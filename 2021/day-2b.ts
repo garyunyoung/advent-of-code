@@ -27,17 +27,19 @@ function finalPosition(
 ): number {
   let horizontal = 0
   let depth = 0
+  let aim = 0
 
   for (let [instruction, movement] of instructions) {
     switch (instruction) {
       case 'forward':
         horizontal += movement
+        depth += aim * movement
         break
       case 'up':
-        depth -= movement
+        aim -= movement
         break
       case 'down':
-        depth += movement
+        aim += movement
         break
       default:
         break

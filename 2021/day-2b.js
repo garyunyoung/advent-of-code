@@ -26,17 +26,19 @@ var transformedData = data
 function finalPosition(instructions) {
     var horizontal = 0;
     var depth = 0;
+    var aim = 0;
     for (var _i = 0, instructions_1 = instructions; _i < instructions_1.length; _i++) {
         var _a = instructions_1[_i], instruction = _a[0], movement = _a[1];
         switch (instruction) {
             case 'forward':
                 horizontal += movement;
+                depth += aim * movement;
                 break;
             case 'up':
-                depth -= movement;
+                aim -= movement;
                 break;
             case 'down':
-                depth += movement;
+                aim += movement;
                 break;
             default:
                 break;
