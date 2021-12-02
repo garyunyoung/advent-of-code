@@ -16,10 +16,7 @@ const transformedData: [string, number][] = data
   .trim()
   .split('\n')
   .map((instructions) => instructions.split(' '))
-  .map(([instruction, movement]) => [
-    instruction,
-    Number(movement)
-  ])
+  .map(([direction, amount]) => [direction, Number(amount)])
 
 // Solution
 function finalPosition(
@@ -28,16 +25,16 @@ function finalPosition(
   let horizontal = 0
   let depth = 0
 
-  for (let [instruction, movement] of instructions) {
-    switch (instruction) {
+  for (let [direction, amount] of instructions) {
+    switch (direction) {
       case 'forward':
-        horizontal += movement
+        horizontal += amount
         break
       case 'up':
-        depth -= movement
+        depth -= amount
         break
       case 'down':
-        depth += movement
+        depth += amount
         break
       default:
         break
