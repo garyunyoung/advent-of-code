@@ -1,27 +1,13 @@
 import getData from '../../utilities'
 
-// Data
+if (!module.parent) {
+  // Data
+  // - Precondition: numbers are same lengths
+  const data = getData()
+  const transformedData = data.trim().split('\n')
 
-// Preconditions
-// - Numbers are same lengths
-const data = getData()
-
-const transformedData = data.trim().split('\n')
-
-const _testData = [
-  '00100',
-  '11110',
-  '10110',
-  '10111',
-  '10101',
-  '01111',
-  '00111',
-  '11100',
-  '10000',
-  '11001',
-  '00010',
-  '01010'
-]
+  console.log('Answer:', powerConsumption(transformedData))
+}
 
 // Solution
 function powerConsumption(data: string[]): number {
@@ -47,4 +33,4 @@ function powerConsumption(data: string[]): number {
   return powerConsumption
 }
 
-console.log('Answer:', powerConsumption(transformedData))
+export default powerConsumption
