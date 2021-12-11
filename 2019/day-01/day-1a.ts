@@ -1,6 +1,6 @@
 import * as fs from 'fs'
 
-const data = fs.readFileSync('inputs/day-1.txt', {
+const data = fs.readFileSync('inputs/ .txt', {
   encoding: 'utf8',
   flag: 'r'
 })

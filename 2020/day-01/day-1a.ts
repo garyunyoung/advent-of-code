@@ -1,7 +1,7 @@
-import getData from '../utilities'
+import getData from '../../utilities'
 
 // Data
-const data = getData('day-1')
+const data = getData()
 
 const transformedData: number[] = data
   .trim()

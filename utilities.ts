@@ -1,9 +1,7 @@
 import * as fs from 'fs'
 
-export default function getData(fileName: string) {
-  const path = `inputs/${fileName}.txt`
-
-  return fs.readFileSync(path, {
+export default function getData() {
+  return fs.readFileSync('input.txt', {
     encoding: 'utf8',
     flag: 'r'
   })

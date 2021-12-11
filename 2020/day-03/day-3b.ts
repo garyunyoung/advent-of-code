@@ -1,8 +1,8 @@
-import getData from '../utilities'
+import getData from '../../utilities'
 import countTreesEncountered from './day-3a'
 
 // Data
-const data = getData('day-3')
+const data = getData()
 
 const transformedData: string[] = data.trim().split('\n')
 

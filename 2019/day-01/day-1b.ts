@@ -1,6 +1,6 @@
 import * as fs from 'fs'
 
-const data = fs.readFileSync('inputs/day-1.txt', {
+const data = fs.readFileSync('inputs/ .txt', {
   encoding: 'utf8',
   flag: 'r'
 })
@@ -8,7 +8,7 @@ const data = fs.readFileSync('inputs/day-1.txt', {
 const arr = data
   .trim()
   .split('\n')
-  .map(str => Number(str))
+  .map((str) => Number(str))
 
 function calcTotalFuel(modules: number[]): number {
   let sum = 0

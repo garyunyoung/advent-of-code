@@ -1,7 +1,7 @@
-import getData from '../utilities'
+import getData from '../../utilities'
 
 // Data
-const data = getData('day-2')
+const data = getData()
 
 const _testData: [string, number][] = [
   ['forward', 5],

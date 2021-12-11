@@ -1,7 +1,7 @@
-import getData from '../utilities'
+import getData from '../../utilities'
 
 // Data
-const data = getData('day-4')
+const data = getData()
 const transformedData: string[] = data.trim().split('\n\n')
 
 const entries = transformedData

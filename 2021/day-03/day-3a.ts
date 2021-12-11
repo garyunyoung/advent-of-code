@@ -1,11 +1,12 @@
-import getData from '../utilities'
+import getData from '../../utilities'
 
 // Data
 
 // Preconditions
 // - Numbers are same lengths
+const data = getData()
 
-const transformedData = getData('day-3').trim().split('\n')
+const transformedData = data.trim().split('\n')
 
 const _testData = [
   '00100',
