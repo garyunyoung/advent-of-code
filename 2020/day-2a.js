@@ -11,15 +11,10 @@ var transformedData = data
     .split('\n')
     .map(function (entry) {
     var _a = entry.split(' '), values = _a[0], requiredChar = _a[1], _password = _a[2];
+    requiredChar = requiredChar[0];
     var transformedValues = values
         .split('-')
         .map(function (value) { return Number(value); });
-    requiredChar = requiredChar[0];
-    console.log([
-        transformedValues,
-        requiredChar,
-        _password
-    ]);
     return [transformedValues, requiredChar, _password];
 });
 // Solution

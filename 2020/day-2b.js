@@ -1,40 +1,36 @@
-const fs = require('fs')
-const data = fs.readFileSync('inputs/day-2.txt',
-  { encoding: 'utf8', flag: 'r' })
-
-// PART TWO
-function recountValidPasswords() {
-  let validPasswordCount = 0
-
-  for (let [[i, j], requiredChar, password] of arr) {
-    i = i - 1
-    j = j - 1
-
-    const isAtPos1 = password[i] === requiredChar 
-    const isAtPos2 = password[j] === requiredChar 
-
-    if (isAtPos1 && !isAtPos2 || 
-        isAtPos2 && !isAtPos1) {
-        ++validPasswordCount
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var utilities_1 = __importDefault(require("../utilities"));
+// Data
+var data = (0, utilities_1.default)('day-2');
+var transformedData = data
+    .trim()
+    .split('\n')
+    .map(function (entry) {
+    var _a = entry.split(' '), values = _a[0], requiredChar = _a[1], _password = _a[2];
+    requiredChar = requiredChar[0];
+    var transformedValues = values
+        .split('-')
+        .map(function (value) { return Number(value); });
+    return [transformedValues, requiredChar, _password];
+});
+// Solution
+function recountValidPasswords(arr) {
+    var validPasswordCount = 0;
+    for (var _i = 0, arr_1 = arr; _i < arr_1.length; _i++) {
+        var _a = arr_1[_i], _b = _a[0], i = _b[0], j = _b[1], requiredChar = _a[1], password = _a[2];
+        i = i - 1;
+        j = j - 1;
+        var isAtPos1 = password[i] === requiredChar;
+        var isAtPos2 = password[j] === requiredChar;
+        if ((isAtPos1 && !isAtPos2) ||
+            (isAtPos2 && !isAtPos1)) {
+            ++validPasswordCount;
+        }
     }
-  }
-
-  return validPasswordCount
+    return validPasswordCount;
 }
-
-const arr = data
-  .trim()
-  .split('\n')
-  .map(entry => {
-    let [values, requiredChar, _password] = entry.split(' ')
-
-    values = values
-      .split('-')
-      .map(value => Number(value))
-
-    requiredChar = requiredChar[0]
-
-    return [values, requiredChar, _password]
-  })
-
-console.log('PART TWO', recountValidPasswords(arr))
+console.log('Answer', recountValidPasswords(transformedData));

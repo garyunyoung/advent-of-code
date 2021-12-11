@@ -9,16 +9,11 @@ const transformedData: [number[], string, string][] = data
   .map((entry) => {
     let [values, requiredChar, _password] = entry.split(' ')
 
+    requiredChar = requiredChar[0]
+
     const transformedValues = values
       .split('-')
       .map((value) => Number(value))
-
-    requiredChar = requiredChar[0]
-    console.log([
-      transformedValues,
-      requiredChar,
-      _password
-    ])
 
     return [transformedValues, requiredChar, _password]
   })
