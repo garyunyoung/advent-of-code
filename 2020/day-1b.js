@@ -1,29 +1,24 @@
-const fs = require('fs')
-
-// PART TWO
+"use strict";
+exports.__esModule = true;
+var utilities_1 = require("../utilities");
+// Data
+var data = (0, utilities_1["default"])('day-1');
+var transformedData = data
+    .trim()
+    .split('\n')
+    .map(function (str) { return Number(str); });
+// Solution
 function getThreeSums(arr, value) {
-  let sum = null
-
-  for (let i = 0; i < arr.length; i++) {
-    for (let j = i; j < arr.length; j++) {
-      for (let k = j; k < arr.length; k++) {
-        if (arr[i] + arr[j] + arr[k] === value) {
-          sum = arr[i] * arr[j] * arr[k]
+    var sum = null;
+    for (var i = 0; i < arr.length; i++) {
+        for (var j = i; j < arr.length; j++) {
+            for (var k = j; k < arr.length; k++) {
+                if (arr[i] + arr[j] + arr[k] === value) {
+                    sum = arr[i] * arr[j] * arr[k];
+                }
+            }
         }
-      }
     }
-  }
-
-  return sum
+    return sum;
 }
-
-const data = fs.readFileSync('inputs/day-1.txt',
-  { encoding: 'utf8', flag: 'r' })
-
-const arr = data
-  .trim()
-  .split('\n')
-  .map(str => Number(str))
-
-console.log('PART TWO:', getThreeSums(arr, 2020))
-
+console.log('Answer:', getThreeSums(transformedData, 2020));

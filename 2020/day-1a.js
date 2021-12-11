@@ -1,7 +1,13 @@
 "use strict";
 exports.__esModule = true;
-var fs = require("fs");
-// PART ONE 
+var utilities_1 = require("../utilities");
+// Data
+var data = (0, utilities_1["default"])('day-1');
+var transformedData = data
+    .trim()
+    .split('\n')
+    .map(function (str) { return Number(str); });
+// Solution
 function getTwoSums(arr, value) {
     var sum = null;
     for (var i = 0; i < arr.length; i++) {
@@ -13,9 +19,4 @@ function getTwoSums(arr, value) {
     }
     return sum;
 }
-var data = fs.readFileSync('inputs/day-1-input.txt', { encoding: 'utf8', flag: 'r' });
-var arr = data
-    .trim()
-    .split('\n')
-    .map(function (str) { return Number(str); });
-console.log('PART ONE:', getTwoSums(arr, 2020));
+console.log('Answer', getTwoSums(transformedData, 2020));

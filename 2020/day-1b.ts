@@ -9,13 +9,15 @@ const transformedData: number[] = data
   .map((str: string) => Number(str))
 
 // Solution
-function getTwoSums(arr: number[], value: number) {
+function getThreeSums(arr: number[], value: number) {
   let sum = null
 
   for (let i = 0; i < arr.length; i++) {
     for (let j = i; j < arr.length; j++) {
-      if (arr[i] + arr[j] === value) {
-        sum = arr[i] * arr[j]
+      for (let k = j; k < arr.length; k++) {
+        if (arr[i] + arr[j] + arr[k] === value) {
+          sum = arr[i] * arr[j] * arr[k]
+        }
       }
     }
   }
@@ -23,4 +25,4 @@ function getTwoSums(arr: number[], value: number) {
   return sum
 }
 
-console.log('Answer', getTwoSums(transformedData, 2020))
+console.log('Answer:', getThreeSums(transformedData, 2020))
