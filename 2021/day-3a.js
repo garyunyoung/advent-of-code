@@ -1,12 +1,14 @@
 "use strict";
-exports.__esModule = true;
-var utilities_1 = require("../utilities");
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var utilities_1 = __importDefault(require("../utilities"));
 // Data
 // Preconditions
 // - Numbers are same lengths
-// const data = getData('day-3')
-var transformedData = (0, utilities_1["default"])('day-3').trim().split('\n');
-var testData = [
+var transformedData = (0, utilities_1.default)('day-3').trim().split('\n');
+var _testData = [
     '00100',
     '11110',
     '10110',

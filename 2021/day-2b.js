@@ -1,8 +1,11 @@
 "use strict";
-exports.__esModule = true;
-var utilities_1 = require("../utilities");
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var utilities_1 = __importDefault(require("../utilities"));
 // Data
-var data = (0, utilities_1["default"])('day-2');
+var data = (0, utilities_1.default)('day-2');
 var _testData = [
     ['forward', 5],
     ['down', 5],
@@ -16,11 +19,8 @@ var transformedData = data
     .split('\n')
     .map(function (instructions) { return instructions.split(' '); })
     .map(function (_a) {
-    var instruction = _a[0], movement = _a[1];
-    return [
-        instruction,
-        Number(movement)
-    ];
+    var direction = _a[0], amount = _a[1];
+    return [direction, Number(amount)];
 });
 // Solution
 function finalPosition(instructions) {
@@ -28,17 +28,17 @@ function finalPosition(instructions) {
     var depth = 0;
     var aim = 0;
     for (var _i = 0, instructions_1 = instructions; _i < instructions_1.length; _i++) {
-        var _a = instructions_1[_i], instruction = _a[0], movement = _a[1];
-        switch (instruction) {
+        var _a = instructions_1[_i], direction = _a[0], amount = _a[1];
+        switch (direction) {
             case 'forward':
-                horizontal += movement;
-                depth += aim * movement;
+                horizontal += amount;
+                depth += aim * amount;
                 break;
             case 'up':
-                aim -= movement;
+                aim -= amount;
                 break;
             case 'down':
-                aim += movement;
+                aim += amount;
                 break;
             default:
                 break;

@@ -1,8 +1,11 @@
 "use strict";
-exports.__esModule = true;
-var utilities_1 = require("../utilities");
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var utilities_1 = __importDefault(require("../utilities"));
 // Data
-var data = (0, utilities_1["default"])('day-1');
+var data = (0, utilities_1.default)('day-1');
 var _testData = [
     199, 200, 208, 210, 200, 207, 240, 269, 260, 263
 ];
