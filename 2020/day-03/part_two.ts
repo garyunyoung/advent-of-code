@@ -1,5 +1,5 @@
 import getData from '../../utilities'
-import countTreesEncountered from './day-3a'
+import countTreesEncountered from './part_one'
 
 // Data
 const data = getData()

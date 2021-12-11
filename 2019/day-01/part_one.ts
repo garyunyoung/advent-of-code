@@ -1,14 +1,12 @@
-import * as fs from 'fs'
+import getData from '../../utilities'
 
-const data = fs.readFileSync('inputs/ .txt', {
-  encoding: 'utf8',
-  flag: 'r'
-})
+// Data
+const data = getData()
 
-const arr = data
+const transformedData: number[] = data
   .trim()
   .split('\n')
-  .map((str) => Number(str))
+  .map((str: string) => Number(str))
 
 function totalFuel(modules: number[]): number {
   let sum = 0
@@ -21,4 +19,4 @@ function totalFuel(modules: number[]): number {
   return sum
 }
 
-console.log(totalFuel(arr))
+console.log(totalFuel(transformedData))

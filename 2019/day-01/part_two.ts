@@ -1,11 +1,9 @@
-import * as fs from 'fs'
+import getData from '../../utilities'
 
-const data = fs.readFileSync('inputs/ .txt', {
-  encoding: 'utf8',
-  flag: 'r'
-})
+// Data
+const data = getData()
 
-const arr = data
+const transformedData: number[] = data
   .trim()
   .split('\n')
   .map((str) => Number(str))
@@ -29,4 +27,4 @@ function calcFuel(moduleMass: number): number {
   return Math.floor(moduleMass / 3) - 2
 }
 
-console.log(calcTotalFuel(arr))
+console.log(calcTotalFuel(transformedData))
