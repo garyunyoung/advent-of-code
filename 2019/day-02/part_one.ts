@@ -1,11 +1,17 @@
-import * as fs from 'fs'
+import getData from '../../utilities'
 
-const data = fs.readFileSync('inputs/day-2.txt', {
-  encoding: 'utf8',
-  flag: 'r'
-})
+if (!module.parent) {
+  const transformedData: number[] = getData()
+    .trim()
+    .split(',')
+    .map((str: string) => Number(str))
 
-function calcProgram(data: number[]): number {
+  console.log(calcProgram(transformedData))
+}
+
+export default function calcProgram(
+  data: number[]
+): number {
   let dataCopy: number[] = data
 
   dataCopy[1] = 12
@@ -20,13 +26,11 @@ function calcProgram(data: number[]): number {
     const pos4: number = dataCopy[i + 3]
 
     if (pos1 === 1) {
-      dataCopy[pos4] =
-        dataCopy[pos2] + dataCopy[pos3]
+      dataCopy[pos4] = dataCopy[pos2] + dataCopy[pos3]
     }
 
     if (pos1 === 2) {
-      dataCopy[pos4] =
-        dataCopy[pos2] * dataCopy[pos3]
+      dataCopy[pos4] = dataCopy[pos2] * dataCopy[pos3]
     }
 
     i += 4
@@ -34,10 +38,3 @@ function calcProgram(data: number[]): number {
 
   return dataCopy[0]
 }
-
-const realData: number[] = data
-  .trim()
-  .split(',')
-  .map((str) => Number(str))
-
-console.log(calcProgram(realData))

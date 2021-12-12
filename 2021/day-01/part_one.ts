@@ -1,19 +1,17 @@
 import getData from '../../utilities'
 
-// Data
-const data = getData()
+if (!module.parent) {
+  const transformedData: number[] = getData()
+    .trim()
+    .split('\n')
+    .map((str) => Number(str))
 
-const _testData: number[] = [
-  199, 200, 208, 210, 200, 207, 240, 269, 260, 263
-]
+  console.log('Answer:', countIncrements(transformedData))
+}
 
-const transformedData: number[] = data
-  .trim()
-  .split('\n')
-  .map((str) => Number(str))
-
-// Solution
-function countIncrements(measurements: number[]): number {
+export default function countIncrements(
+  measurements: number[]
+): number {
   let count: number = 0
 
   for (let i = 0; i < measurements.length - 1; i++) {
@@ -24,5 +22,3 @@ function countIncrements(measurements: number[]): number {
 
   return count
 }
-
-console.log('Answer:', countIncrements(transformedData))

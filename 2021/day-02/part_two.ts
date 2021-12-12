@@ -1,25 +1,19 @@
 import getData from '../../utilities'
 
-// Data
-const data = getData()
+if (!module.parent) {
+  const transformedData: [string, number][] = getData()
+    .trim()
+    .split('\n')
+    .map((instructions) => instructions.split(' '))
+    .map(([direction, amount]) => [
+      direction,
+      Number(amount)
+    ])
 
-const _testData: [string, number][] = [
-  ['forward', 5],
-  ['down', 5],
-  ['forward', 8],
-  ['up', 3],
-  ['down', 8],
-  ['forward', 2]
-]
+  console.log('Answer:', finalPosition(transformedData))
+}
 
-const transformedData: [string, number][] = data
-  .trim()
-  .split('\n')
-  .map((instructions) => instructions.split(' '))
-  .map(([direction, amount]) => [direction, Number(amount)])
-
-// Solution
-function finalPosition(
+export default function finalPosition(
   instructions: [string, number][]
 ): number {
   let horizontal = 0
@@ -45,5 +39,3 @@ function finalPosition(
 
   return horizontal * depth
 }
-
-console.log('Answer:', finalPosition(transformedData))

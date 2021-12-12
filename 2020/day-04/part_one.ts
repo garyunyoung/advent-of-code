@@ -1,24 +1,40 @@
 import getData from '../../utilities'
 
-// Data
-const data = getData()
-const transformedData: string[] = data.trim().split('\n\n')
+if (!module.parent) {
+  const transformedData: string[] = getData()
+    .trim()
+    .split('\n\n')
 
-const entries = transformedData
-const allPassportsFieldCodes = entries.map((entry) =>
-  getFieldCodes(entry)
-)
-const requiredFields = [
-  'byr',
-  'iyr',
-  'eyr',
-  'hgt',
-  'hcl',
-  'ecl',
-  'pid'
-]
+  console.log(transformedData)
 
-function getFieldCodes(str: string) {
+  const requiredFields: string[] = [
+    'byr',
+    'iyr',
+    'eyr',
+    'hgt',
+    'hcl',
+    'ecl',
+    'pid'
+  ]
+
+  console.log(
+    'Answer:',
+    countValidPassports(
+      allPassportsFieldCodes(transformedData),
+      requiredFields
+    )
+  )
+}
+
+function allPassportsFieldCodes(
+  transformedData: string[]
+): [string, string][] {
+  return transformedData.map((entry: string) =>
+    getFieldCodes(entry)
+  )
+}
+
+function getFieldCodes(str: string): [string, string] {
   const entry = str.split(/\s/)
   let allPassportsFieldCodes: [string, string] = ['', '']
 
@@ -30,11 +46,10 @@ function getFieldCodes(str: string) {
   return allPassportsFieldCodes
 }
 
-// Solution
 function countValidPassports(
   allPassportsFieldCodes: [string, string][],
   requiredFields: string[]
-) {
+): number {
   let validPassportCount = 0
 
   for (let passportFieldCodes of allPassportsFieldCodes) {
@@ -50,10 +65,4 @@ function countValidPassports(
   return validPassportCount
 }
 
-console.log(
-  'Answer:',
-  countValidPassports(
-    allPassportsFieldCodes,
-    requiredFields
-  )
-)
+export { allPassportsFieldCodes, countValidPassports }

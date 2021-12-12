@@ -1,11 +1,20 @@
-import * as fs from 'fs'
+import getData from '../../utilities'
 
-const data = fs.readFileSync('inputs/day-2.txt', {
-  encoding: 'utf8',
-  flag: 'r'
-})
+if (!module.parent) {
+  const transformedData: number[] = getData()
+    .trim()
+    .split(',')
+    .map((str: string) => Number(str))
 
-function getOutput(data: number[], noun: number, verb: number): number {
+  console.log(getOutput(transformedData, 12, 2))
+  console.log(findNounAndVerb(transformedData, 19690720))
+}
+
+function getOutput(
+  data: number[],
+  noun: number,
+  verb: number
+): number {
   let dataCopy: number[] = Array.from(data)
 
   dataCopy[1] = noun
@@ -33,7 +42,10 @@ function getOutput(data: number[], noun: number, verb: number): number {
   return dataCopy[0]
 }
 
-function findNounAndVerb(arr: number[], target: number): number | string {
+function findNounAndVerb(
+  arr: number[],
+  target: number
+): number | string {
   for (let noun: number = 0; noun < 100; noun++) {
     for (let verb: number = 0; verb < 100; verb++) {
       if (getOutput(arr, noun, verb) === target) {
@@ -44,10 +56,4 @@ function findNounAndVerb(arr: number[], target: number): number | string {
   return 'sorry no match'
 }
 
-const arr: number[] = data
-  .trim()
-  .split(',')
-  .map((str) => Number(str))
-
-console.log(getOutput(arr, 12, 2))
-console.log(findNounAndVerb(arr, 19690720))
+export default { getOutput, findNounAndVerb }

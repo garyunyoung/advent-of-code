@@ -1,13 +1,26 @@
 import getData from '../../utilities'
 import countTreesEncountered from './part_one'
 
-// Data
-const data = getData()
+if (!module.parent) {
+  const transformedData: string[] = getData()
+    .trim()
+    .split('\n')
 
-const transformedData: string[] = data.trim().split('\n')
+  const moves = [
+    [1, 1],
+    [1, 3],
+    [1, 5],
+    [1, 7],
+    [2, 1]
+  ]
 
-// Solution
-function sumAllTreesEncountered(
+  console.log(
+    'Answer:',
+    sumAllTreesEncountered(transformedData, moves)
+  )
+}
+
+export default function sumAllTreesEncountered(
   arr: string[],
   moves: number[][]
 ) {
@@ -19,16 +32,3 @@ function sumAllTreesEncountered(
 
   return treeCount
 }
-
-const moves = [
-  [1, 1],
-  [1, 3],
-  [1, 5],
-  [1, 7],
-  [2, 1]
-]
-
-console.log(
-  'Answer:',
-  sumAllTreesEncountered(transformedData, moves)
-)

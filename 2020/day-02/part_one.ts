@@ -1,27 +1,32 @@
 import getData from '../../utilities'
 
-// Data
-const data = getData()
+if (!module.parent) {
+  const transformedData: [number[], string, string][] =
+    getData()
+      .trim()
+      .split('\n')
+      .map((entry) => {
+        let [values, requiredChar, _password] =
+          entry.split(' ')
 
-const transformedData: [number[], string, string][] = data
-  .trim()
-  .split('\n')
-  .map((entry) => {
-    let [values, requiredChar, _password] = entry.split(' ')
+        requiredChar = requiredChar[0]
 
-    requiredChar = requiredChar[0]
+        const transformedValues = values
+          .split('-')
+          .map((value) => Number(value))
 
-    const transformedValues = values
-      .split('-')
-      .map((value) => Number(value))
+        return [transformedValues, requiredChar, _password]
+      })
 
-    return [transformedValues, requiredChar, _password]
-  })
+  console.log(
+    'Answer:',
+    countValidPasswords(transformedData)
+  )
+}
 
-// Solution
-function countValidPasswords(
+export default function countValidPasswords(
   arr: [number[], string, string][]
-) {
+): number {
   let validPasswordCount = 0
 
   for (const [[min, max], requiredChar, password] of arr) {
@@ -47,7 +52,7 @@ function countValidPasswords(
 // Alternative Solution - Regex
 function countValidPasswordsUsingRegex(
   arr: [number[], string, string][]
-) {
+): number {
   let validPasswordCount = 0
 
   for (const [[min, max], requiredChar, password] of arr) {
@@ -65,5 +70,3 @@ function countValidPasswordsUsingRegex(
 
   return validPasswordCount
 }
-
-console.log('Answer:', countValidPasswords(transformedData))

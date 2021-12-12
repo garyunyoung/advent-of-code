@@ -1,11 +1,16 @@
 import getData from '../../utilities'
 
-// Data
-const data = getData()
+if (!module.parent) {
+  const transformedData: string[] = getData()
+    .trim()
+    .split('\n')
 
-const transformedData: string[] = data.trim().split('\n')
+  console.log(
+    'Answer:',
+    countTreesEncountered(transformedData, 1, 3)
+  )
+}
 
-// Solution
 export default function countTreesEncountered(
   arr: string[],
   down: number,
@@ -29,8 +34,3 @@ export default function countTreesEncountered(
 
   return treeCount
 }
-
-console.log(
-  'Answer:',
-  countTreesEncountered(transformedData, 1, 3)
-)

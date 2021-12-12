@@ -1,28 +1,35 @@
 import getData from '../../utilities'
 
-// Data
-const data = getData()
-const transformedData: string[] = data.trim().split('\n\n')
+if (!module.parent) {
+  const transformedData: string[] = getData()
+    .trim()
+    .split('\n\n')
 
-function parseEntry(str: string) {
-  const entry = str.split(/\s/)
-  let obj: any = {}
+  const parsedParsports: string[] = transformedData.map(
+    (entry: string) => parseEntry(entry)
+  )
 
-  for (const part of entry) {
-    const [code, value] = part.split(':')
-    obj[code] = value
+  const parseEntry = (str: string) => {
+    const entry = str.split(/\s/)
+    let obj: any = {}
+
+    for (const part of entry) {
+      const [code, value] = part.split(':')
+      obj[code] = value
+    }
+
+    return obj
   }
 
-  return obj
+  console.log(
+    'Answer:',
+    countValidPassports(parsedParsports)
+  )
 }
 
-const entries = transformedData
-const parsedParsports: string[] = entries.map((entry) =>
-  parseEntry(entry)
-)
-
-// Solution
-function countValidPassports(parsedParsports: string[]) {
+export default function countValidPassports(
+  parsedParsports: string[]
+): number {
   let validPassportCount = 0
 
   for (let passport of parsedParsports) {
@@ -35,7 +42,7 @@ function countValidPassports(parsedParsports: string[]) {
   return validPassportCount
 }
 
-function validatePassports(data: any) {
+function validatePassports(data: any): boolean {
   return (
     validBirthYear(data) &&
     validIssueYear(data) &&
@@ -47,7 +54,7 @@ function validatePassports(data: any) {
   )
 }
 
-// VALIDATIONS
+// Validations
 function validRange(str: string, min: number, max: number) {
   if (str === undefined) {
     return false
@@ -119,8 +126,3 @@ function validPassportID(data: any) {
 
   return data.pid.length === 9
 }
-
-console.log(
-  'PART TWO:',
-  countValidPassports(parsedParsports)
-)

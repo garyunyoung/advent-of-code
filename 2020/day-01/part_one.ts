@@ -1,15 +1,18 @@
 import getData from '../../utilities'
 
-// Data
-const data = getData()
+if (!module.parent) {
+  const transformedData: number[] = getData()
+    .trim()
+    .split('\n')
+    .map((str: string) => Number(str))
 
-const transformedData: number[] = data
-  .trim()
-  .split('\n')
-  .map((str: string) => Number(str))
+  console.log('Answer', getTwoSums(transformedData, 2020))
+}
 
-// Solution
-function getTwoSums(arr: number[], value: number) {
+export default function getTwoSums(
+  arr: number[],
+  value: number
+) {
   let sum = null
 
   for (let i = 0; i < arr.length; i++) {
@@ -22,5 +25,3 @@ function getTwoSums(arr: number[], value: number) {
 
   return sum
 }
-
-console.log('Answer', getTwoSums(transformedData, 2020))

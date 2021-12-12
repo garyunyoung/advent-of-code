@@ -1,14 +1,17 @@
 import getData from '../../utilities'
 
-// Data
-const data = getData()
+if (!module.parent) {
+  const transformedData: number[] = getData()
+    .trim()
+    .split('\n')
+    .map((str: string) => Number(str))
 
-const transformedData: number[] = data
-  .trim()
-  .split('\n')
-  .map((str: string) => Number(str))
+  console.log(totalFuel(transformedData))
+}
 
-function totalFuel(modules: number[]): number {
+export default function totalFuel(
+  modules: number[]
+): number {
   let sum = 0
 
   for (let module of modules) {
@@ -18,5 +21,3 @@ function totalFuel(modules: number[]): number {
 
   return sum
 }
-
-console.log(totalFuel(transformedData))

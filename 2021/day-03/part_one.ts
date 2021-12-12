@@ -1,16 +1,17 @@
 import getData from '../../utilities'
 
+// Preconditions: numbers are same lengths
+
 if (!module.parent) {
-  // Data
-  // - Precondition: numbers are same lengths
   const data = getData()
   const transformedData = data.trim().split('\n')
 
   console.log('Answer:', powerConsumption(transformedData))
 }
 
-// Solution
-function powerConsumption(data: string[]): number {
+export default function powerConsumption(
+  data: string[]
+): number {
   let tally: number[] = new Array(data[0].length).fill(0)
 
   for (let i = 0; i < data.length; i++) {
@@ -32,5 +33,3 @@ function powerConsumption(data: string[]): number {
 
   return powerConsumption
 }
-
-export default powerConsumption
